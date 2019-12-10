@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "0d4caec2-5388-47dd-88ab-330e752bc3b3",
+		"name": "Musala collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gateway POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e519e6e-6bf1-4fce-a1ac-d1a19e7dc429",
+						"exec": [
+							"var responseJson;",
+							"",
+							"    try{",
+							"      responseJson = pm.response.json();",
+							"      tests['JSON returned'] = true;",
+							"      pm.globals.set('gateway_id',responseJson.id);",
+							"    }",
+							"    catch(e){",
+							"      responseJson={};",
+							"      tests['JSON returned'] = false;",
+							"    }",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"g1\",\n\t\"address\": \"10.0.0.1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/api/gateway",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gateway by id GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0feb669b-1b86-4875-9aa3-285c031ae6f9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "peripheral POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8bb02314-4d87-412d-baf8-8f67f827ff48",
+						"exec": [
+							"var responseJson;",
+							"",
+							"    try{",
+							"      responseJson = pm.response.json();",
+							"      tests['JSON returned'] = true;",
+							"      pm.globals.set('peripheral_id',responseJson.id);",
+							"    }",
+							"    catch(e){",
+							"      responseJson={};",
+							"      tests['JSON returned'] = false;",
+							"    }",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"vendor\":\"vendor1\",\n \"status\":\"online\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}/peripheral",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}",
+						"peripheral"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "peripherals by gateway id GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}/peripheral",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}",
+						"peripheral"
+					]
+				},
+				"description": "to get all peripheral from specific gateway"
+			},
+			"response": []
+		},
+		{
+			"name": "peripheral by id GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}/peripheral/{{peripheral_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}",
+						"peripheral",
+						"{{peripheral_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "peripheral DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/gateway/{{gateway_id}}/peripheral/{{peripheral_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"gateway",
+						"{{gateway_id}}",
+						"peripheral",
+						"{{peripheral_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
